@@ -2,6 +2,6 @@
 
 int main() {
 
-	sol26();
+	sol29();
 
 }

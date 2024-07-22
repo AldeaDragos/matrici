@@ -681,3 +681,78 @@ void Max2Ap(int a[100][100], int n, int m) {
 }
 
 //Se dă o matrice cu n linii şi m coloane şi elemente numere naturale. Determinați indicele liniei care conține număr maxim de elemente pare. Dacă există mai multe linii cu număr maxim de elemente pare, se vor afișa toți indicii, în ordine crescătoare.
+void nrPare(int a[100][100], int n, int m) {
+
+	int ct = 0;
+	int max = 0;
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (a[i][j] % 2 == 0) {
+				ct++;
+			}
+		}
+		if (ct > max) {
+			max = ct;
+		}
+	}
+
+	bool gasit = false;
+
+	for (int i = 0; i < n; i++) {
+		if (ct == max) {
+			cout << i << " ";
+			gasit = true;
+		}
+	}
+}
+
+//Se dă o matrice cu n linii și m coloane și elemente numere naturale. Să se determine indicele liniei pentru care suma elementelor pare este maximă.
+
+void SumElPare(int a[100][100], int n, int m) {
+
+	int maxSum = 0;
+	int indexL = -1;
+	int suma = 0;
+
+	for (int i = 0; i < n; i++) {
+		suma = 0;
+		for (int j = 0; j < m; j++) {
+			if (a[i][j] % 2 == 0) {
+				suma += a[i][j];
+			}
+		}
+
+		if (suma > maxSum) {
+			maxSum = suma;
+			indexL = i;
+		}
+	}
+	cout << indexL << endl;
+}
+
+//Se dă o matrice cu n linii şi m coloane şi elemente numere naturale. Să se ordoneze coloanele matricei astfel încât elementele de pe prima linie să fie ordonate crescător.
+
+void schimbareColoane(int a[100][100], int col1, int col2, int n) {
+
+	for (int i = 0; i < n; i++) {
+
+		int temp = a[i][col1];
+
+		a[i][col1] = a[i][col2];
+
+		a[i][col2] = temp;
+	}
+}
+
+void sortareColoanePrimaLinie(int a[100][100], int n, int m) {
+
+	for (int i = 0; i < m - 1; i++) {
+		for (int j = i + 1; j < m; j++) {
+			if (a[0][i] > a[0][j]) {
+				schimbareColoane(a, i, j, n);
+			}
+		}
+	}
+}
+
